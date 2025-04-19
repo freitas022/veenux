@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive
+
+  cloud:
+    gateway:
+      routes:
+        - id: ms-cart
+          uri: lb://ms-cart
+          predicates:
+            - Path=/cart/**
+
+        - id: ms-order
+          uri: lb://ms-order
+          predicates:
+            - Path=/order/**
+
+        - id: ms-payment
+          uri: lb://ms-payment
+          predicates:
+            - Path=/payment/**
+
+        - id: ms-product-category
+          uri: lb://ms-product-category
+          predicates:
+            - Path=/product/**,/category/**
+
+        - id: ms-stock
+          uri: lb://ms-stock
+          predicates:
+            - Path=/stock/**
+
+        - id: ms-user
+          uri: lb://ms-user
+          predicates:
+            - Path=/user/**,/auth/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
