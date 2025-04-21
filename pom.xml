@@ -32,6 +32,7 @@
 		<module>ms-user</module>
 		<module>eureka-server</module>
 		<module>api-gateway</module>
+		<module>common-exception</module>
 	</modules>
 
 	<dependencyManagement>
